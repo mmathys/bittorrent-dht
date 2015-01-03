@@ -340,6 +340,11 @@ DHT.prototype.getPeers = function (infoHash) {
   infoHash = idToHexString(infoHash)
 
   var peers = self.peers[infoHash]
+  if (!peers) peers = self.peers[infoHash] = {
+    index: {}, // addr -> true
+    list: [] // compactAddr
+  }
+  
   return peers.list;
 }
 
