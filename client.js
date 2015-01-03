@@ -326,6 +326,7 @@ DHT.prototype._addPeer = function (addr, infoHash) {
   if (!peers.index[addr]) {
     peers.index[addr] = true
     peers.list.push(string2compact(addr))
+    console.log("push, length: "+peers.list.length)
     self._debug('addPeer %s %s', addr, infoHash)
     self.emit('announce', addr, infoHash)
   }
@@ -344,7 +345,7 @@ DHT.prototype.getPeers = function (infoHash) {
     index: {}, // addr -> true
     list: [] // compactAddr
   }
-  
+
   return peers.list;
 }
 
